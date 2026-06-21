@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: 'SKF India — Industrial B2B Marketplace',
-  description: 'Premium bearings, seals, and industrial components for India's heavy industries. Request RFQ bulk pricing instantly.',
+  description: 'Premium bearings, seals, and industrial components for India\'s heavy industries. Request RFQ bulk pricing instantly.',
   keywords: 'SKF India, bearings, industrial components, B2B marketplace, RFQ, deep groove ball bearing',
 }
 
