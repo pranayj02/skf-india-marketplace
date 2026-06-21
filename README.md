@@ -1,58 +1,30 @@
-# SKF India – Industrial B2B Marketplace
+# SKF India — Industrial Procurement Marketplace
 
-A premium, enterprise-focused B2B E-Marketplace and Campaign Landing Page template for **SKF India (Industrial Division)**.
+A premium, enterprise-first Next.js marketplace template for **SKF India (Industrial Division)**.
 
-## ✨ Features
+## Design highlights
 
-- **Hero Campaign Block** — Split layout with animated metric counters, value proposition, and an interactive product selector
-- **Industry Sector Navigation** — 6-sector grid (Metals, Mining, Food & Beverage, Renewable Energy, Automotive, Marine) with hover transitions
-- **Live RFQ Product Grid** — 6 SKF bearing products with quantity selectors, spec tables, and "Add to Enquiry Cart" with real-time cart counter
-- **Lead Capture Form** — Corporate intake form with DPDPA/GDPR compliance checkboxes, auto-populated from cart
-- **Functional Enquiry Cart** — Header cart badge with live count, dropdown cart drawer
-- **Responsive** — Mobile-first, fluid layout for field engineers on-site
+- **Dark premium UI** — deep midnight navy background, ultra-faint engineering grid, high-contrast typography
+- **Procurement-first** — command-center hero with SKU search, industry entry, and RFQ-first CTA
+- **Glassmorphic product configurator** — frosted panel with precision-gauge specs and clean left-accent tab selection
+- **Scan-friendly product explorer** — table-card hybrid with dimensions, sealing, application, stock tone, MOQ, and compare actions
+- **Live enquiry workspace** — cart drawer with quantity updates and direct RFQ routing
+- **Enterprise lead capture** — progressive form with consent handling and cart auto-population
 
-## 🚀 Deploy to Vercel
+## Tech stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/pranayj02/skf-india-marketplace)
+- Next.js 14 App Router
+- React 18 + TypeScript
+- Tailwind CSS
+- Lucide React
 
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS v3
-- **Language**: TypeScript
-- **Icons**: Lucide React
-- **Font**: Inter (Google Fonts)
-
-## 📦 Local Development
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+## Deploy to Vercel
 
-## 📁 Project Structure
-
-```
-app/
-  layout.tsx        # Root layout with Inter font + metadata
-  globals.css       # Tailwind base + custom component classes
-  page.tsx          # Root page — cart state management
-components/
-  Header.tsx        # Sticky nav + enquiry cart drawer
-  HeroSection.tsx   # Split hero + animated counters + product selector
-  IndustryNav.tsx   # 6-sector industry grid
-  RFQGrid.tsx       # Product listing with qty selectors + add-to-cart
-  LeadCapture.tsx   # Lead form with DPDPA compliance
-  Footer.tsx        # Brand footer with contact info
-```
-
-## 🎨 Brand Colors
-
-| Token | Hex | Usage |
-|---|---|---|
-| `skf-blue` | `#003366` | Primary brand, header, headings |
-| `skf-red` | `#E8001D` | Primary CTA, product tags |
-| `skf-orange` | `#FF6B00` | Accent, icons, highlights |
-| `skf-grey` | `#F4F6F9` | Section backgrounds |
+Import the repository into Vercel and deploy directly. No database or environment variables required.
