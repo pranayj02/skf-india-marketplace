@@ -195,8 +195,9 @@ type CartItem = Product & { quantity: number }
 export default function Page() {
   const [mobileMenu,    setMobileMenu]    = useState(false)
   const [activeIndustry, setActiveIndustry] = useState('steel')
-  const [activeProduct,  setActiveProduct]  = useState('dgbb')
+  const [activeCategory, setActiveCategory]  = useState<string|null>(null)
   const [search,         setSearch]         = useState('')
+  const [catSearch,      setCatSearch]      = useState('')
   const [cart,           setCart]           = useState<CartItem[]>([])
   const [cartOpen,       setCartOpen]       = useState(false)
   const [compare,        setCompare]        = useState<string[]>([])
@@ -204,6 +205,16 @@ export default function Page() {
     name: '', company: '', whatsapp: '', message: '', consent: true, updates: false,
   })
   const [submitted, setSubmitted] = useState(false)
+
+  const filteredCategories = useMemo(() => {
+    const q = catSearch.toLowerCase()
+    if (!q) return CATEGORIES
+    return CATEGORIES.filter((c) =>
+      c.label.toLowerCase().includes(q) ||
+      c.series.toLowerCase().includes(q) ||
+      c.application.toLowerCase().includes(q)
+    )
+  }, [catSearch])
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -243,8 +254,6 @@ export default function Page() {
     setSubmitted(true)
   }
 
-  const selectedProductType = PRODUCT_TYPES.find((p) => p.id === activeProduct) || PRODUCT_TYPES[0]
-  const selectedProductImage = PRODUCT_IMAGES[activeProduct] || PRODUCT_IMAGES.dgbb
 
   return (
     <div className="min-h-screen bg-white text-[#1a2535]" style={{ fontFamily: "'SKF Sans', 'Inter', system-ui, sans-serif" }}>
@@ -437,72 +446,70 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Right: Corporate Product Configurator */}
+            {/* Right: Product Category Finder */}
             <div className="relative">
-              <div className="rounded-lg border border-slate-200 bg-white shadow-[0_4px_24px_rgba(0,51,102,0.08)]">
+              <div className="rounded-xl border border-slate-200 bg-white shadow-[0_4px_24px_rgba(0,51,102,0.08)]">
+
                 {/* Panel header */}
-                <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3.5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Product Configurator</p>
+                <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3.5 rounded-t-xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Product Categories</p>
                   <span className="inline-flex items-center gap-1.5 rounded border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-500">
                     <ShieldCheck className="h-3 w-3 text-[#003366]" />
-                    ISO 9001:2015
+                    {CATEGORIES.length} Families
                   </span>
                 </div>
 
-                <div className="space-y-0 divide-y divide-slate-100">
-                  {/* Product type list */}
-                  {PRODUCT_TYPES.map((p) => (
-                    <button
-                      key={p.id}
-                      onClick={() => setActiveProduct(p.id)}
-                      className={`flex w-full items-center justify-between px-5 py-3.5 text-left transition-all ${
-                        activeProduct === p.id
-                          ? 'border-l-[3px] border-l-[#E31B23] bg-[#fff5f5]'
-                          : 'border-l-[3px] border-l-transparent hover:bg-slate-50'
-                      }`}
+                {/* Search */}
+                <div className="border-b border-slate-100 px-4 py-3">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+                    <input
+                      type="text"
+                      placeholder="Search family, series, or application…"
+                      value={catSearch}
+                      onChange={(e) => setCatSearch(e.target.value)}
+                      className="w-full rounded-md border border-slate-200 bg-white py-2 pl-8.5 pr-3 text-[13px] text-slate-700 placeholder:text-slate-400 focus:border-[#003366] focus:outline-none focus:ring-1 focus:ring-[#003366]/20 transition"
+                    />
+                  </div>
+                </div>
+
+                {/* Category grid */}
+                <div className="grid grid-cols-2 gap-0 divide-x divide-y divide-slate-100 max-h-[340px] overflow-y-auto">
+                  {filteredCategories.length === 0 ? (
+                    <div className="col-span-2 py-10 text-center text-sm text-slate-400">No categories match &ldquo;{catSearch}&rdquo;</div>
+                  ) : filteredCategories.map((cat) => (
+                    <a
+                      key={cat.id}
+                      href="#catalog"
+                      onClick={() => { setSearch(cat.label.split(' ').slice(0,2).join(' ')); setActiveCategory(cat.id) }}
+                      className="group flex items-start gap-3 p-3.5 transition hover:bg-[#f0f4fa]"
                     >
-                      <div>
-                        <p className={`text-[13px] font-semibold ${ activeProduct === p.id ? 'text-[#003366]' : 'text-slate-600'}`}>{p.label}</p>
-                        <p className="mt-0.5 text-[11px] text-slate-400">Series: {p.series}</p>
+                      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-50">
+                        <img src={cat.image} alt={cat.label} className="h-full w-full object-cover" loading="lazy" width={40} height={40} />
                       </div>
-                      {activeProduct === p.id && <ChevronRight className="h-4 w-4 shrink-0 text-[#E31B23]" />}
-                    </button>
+                      <div className="min-w-0">
+                        <p className="text-[12px] font-semibold leading-tight text-[#003366] group-hover:text-[#E31B23] transition">{cat.label}</p>
+                        <p className="mt-0.5 text-[10px] text-slate-400 truncate">{cat.series}</p>
+                        <p className="mt-1 text-[10px] font-semibold text-slate-500">{cat.skus.toLocaleString()}+ SKUs</p>
+                      </div>
+                    </a>
                   ))}
                 </div>
 
-                {/* Product preview */}
-                <div className="border-t border-slate-200 p-5">
-                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Selected Product Preview</p>
-
-                  {/* Product image */}
-                  <div className="mb-4 overflow-hidden rounded-md border border-slate-200 bg-slate-50">
-                    <img
-                      src={selectedProductImage}
-                      alt={selectedProductType.label}
-                      className="h-48 w-full object-cover"
-                      loading="lazy"
-                    />
+                {/* Trending SKUs footer */}
+                <div className="border-t border-slate-200 bg-slate-50 px-4 py-3 rounded-b-xl">
+                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Trending SKUs</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {TRENDING_SKUS.map((sku) => (
+                      <button
+                        key={sku}
+                        onClick={() => { setSearch(sku.replace('SKF-', '')); document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' }) }}
+                        className="rounded border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-mono font-medium text-[#003366] transition hover:border-[#E31B23] hover:text-[#E31B23]"
+                      >
+                        {sku}
+                      </button>
+                    ))}
                   </div>
-
-                  <p className="text-sm font-bold text-[#003366]">SKF 6305-2Z/C3 Deep Groove</p>
-
-                  {/* Spec grid */}
-                  <div className="mt-3 overflow-hidden rounded-md border border-slate-200">
-                    <table className="w-full text-sm">
-                      <tbody className="divide-y divide-slate-100">
-                        {[['Bore', '25 mm'], ['OD', '62 mm'], ['Width', '17 mm']].map(([k, v]) => (
-                          <tr key={k} className="flex items-center">
-                            <td className="w-1/2 border-r border-slate-100 bg-slate-50 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">{k}</td>
-                            <td className="w-1/2 px-4 py-2.5 font-mono text-sm font-semibold text-[#003366]">{v}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#003366] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-[#004d99]">
-                    Quick Add to RFQ <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
                 </div>
               </div>
             </div>
