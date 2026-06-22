@@ -79,6 +79,7 @@ const products = [
     application: 'Motor drives / pump skids',
     moq: 10,
     bulk: 'Bulk RFQ eligible',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=DG',
   },
   {
     id: '6205-2RS1',
@@ -95,6 +96,7 @@ const products = [
     application: 'Washdown conveyors',
     moq: 12,
     bulk: 'Preferred for repeat maintenance buys',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=SB',
   },
   {
     id: '22316-E-C3',
@@ -111,6 +113,7 @@ const products = [
     application: 'Crushers / vibrating screens',
     moq: 4,
     bulk: 'Application engineering review suggested',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=SR',
   },
   {
     id: '32215-J2-Q',
@@ -127,6 +130,7 @@ const products = [
     application: 'Gearboxes / mill stands',
     moq: 6,
     bulk: 'Bulk RFQ eligible',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=TR',
   },
   {
     id: 'NJ2306-ECP',
@@ -143,6 +147,7 @@ const products = [
     application: 'Generator and rotating supports',
     moq: 8,
     bulk: 'Service kit compatible',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=CR',
   },
   {
     id: 'YAR-208-2F',
@@ -159,6 +164,7 @@ const products = [
     application: 'Food lines / unit replacements',
     moq: 10,
     bulk: 'Fast-moving maintenance SKU',
+    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=MU',
   },
 ]
 
