@@ -613,7 +613,8 @@ export default function Page() {
             </div>
 
             <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
-              <div className="hidden grid-cols-[2.3fr_1fr_1fr_1fr_1.2fr_1.2fr] gap-4 border-b border-slate-200 bg-slate-50 px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:grid">
+              <div className="hidden grid-cols-[72px_2.3fr_1fr_1fr_1fr_1.2fr_1.2fr] gap-4 border-b border-slate-200 bg-slate-50 px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:grid">
+                <div></div>
                 <div>Product</div>
                 <div>Dimensions</div>
                 <div>Sealing</div>
@@ -772,7 +773,12 @@ function ProductRow({ product, inCompare, onToggleCompare, onAddToCart }: {
     'bg-slate-50 text-slate-500 border-slate-200'
 
   return (
-    <div className="grid gap-4 px-5 py-5 lg:grid-cols-[2.3fr_1fr_1fr_1fr_1.2fr_1.2fr] lg:items-center hover:bg-slate-50/60 transition">
+    <div className="grid gap-4 px-5 py-5 lg:grid-cols-[72px_2.3fr_1fr_1fr_1fr_1.2fr_1.2fr] lg:items-center hover:bg-slate-50/60 transition">
+      <div className="flex items-center justify-center">
+        <div className="h-[72px] w-[72px] overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+          <img src={product.image} alt={product.name} className="h-full w-full object-cover" loading="lazy" width={72} height={72} />
+        </div>
+      </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">{product.family}</span>
