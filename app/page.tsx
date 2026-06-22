@@ -79,7 +79,7 @@ const products = [
     application: 'Motor drives / pump skids',
     moq: 10,
     bulk: 'Bulk RFQ eligible',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=DG',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/4d7e9c78899f63fdea4ea783fb87b5be26d4d9d6.jpg',
   },
   {
     id: '6205-2RS1',
@@ -96,7 +96,7 @@ const products = [
     application: 'Washdown conveyors',
     moq: 12,
     bulk: 'Preferred for repeat maintenance buys',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=SB',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/d2eb6c164aae11f5808b013486793e8030ff6bfc.jpg',
   },
   {
     id: '22316-E-C3',
@@ -113,7 +113,7 @@ const products = [
     application: 'Crushers / vibrating screens',
     moq: 4,
     bulk: 'Application engineering review suggested',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=SR',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/640cbf8dc3e729faf5eec7f70c266edca2299a2a.jpg',
   },
   {
     id: '32215-J2-Q',
@@ -130,7 +130,7 @@ const products = [
     application: 'Gearboxes / mill stands',
     moq: 6,
     bulk: 'Bulk RFQ eligible',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=TR',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f9d3933ad109dd8ffd7397e627c50f2806e26ba7.jpg',
   },
   {
     id: 'NJ2306-ECP',
@@ -147,7 +147,7 @@ const products = [
     application: 'Generator and rotating supports',
     moq: 8,
     bulk: 'Service kit compatible',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=CR',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cd271d1a5bf9aabfdb01b27f9bbf4b5f6d28922d.jpg',
   },
   {
     id: 'YAR-208-2F',
@@ -164,7 +164,7 @@ const products = [
     application: 'Food lines / unit replacements',
     moq: 10,
     bulk: 'Fast-moving maintenance SKU',
-    image: 'https://placehold.co/72x72/0B1120/94a3b8?text=MU',
+    image: 'https://pplx-res.cloudinary.com/image/upload/pplx_search_images/320724ccc28da6290ef947c3185eada656c71a86.jpg',
   },
 ]
 
